@@ -1,0 +1,8 @@
+#creating a new db
+php bin/console doctrine:database:create
+
+#generating getters and setters in entities
+php bin/console doctrine:generate:entities AppBundle/Entity/Task
+
+# update the db schema
+php bin/console doctrine:schema:update --force

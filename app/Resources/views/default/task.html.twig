@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% for task in tasks %}
+        <li><a href="">{{ task.item }}</a></li>
+    {% endfor %}
+{% endblock %}
+{% block stylesheets %}
+<style>
+</style>
+{% endblock %}
