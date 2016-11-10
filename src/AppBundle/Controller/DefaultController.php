@@ -17,44 +17,25 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-//        $task = new Task();
-//        $task->setItem('Bollox');
         $taskInput = new TaskInput();
-
-
         $form = $this->createFormBuilder($taskInput)
             ->add('task', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Post'))
+            ->add('save', SubmitType::class, array('label' => 'Save ToDo'))
             ->getForm();
-
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
             $input = $form->getData();
-            echo $input->getTask();
-
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            // $em = $this->getDoctrine()->getManager();
-            // $em->persist($task);
-            // $em->flush();
-//
-//            return $this->redirectToRoute('task_success');
+            $taskData = $input->getTask();
+            $em = $this->getDoctrine()->getManager();
+            $task = new Task();
+            $task->setItem($taskData);
+            $em->persist($task);
+            $em->flush();
         }
 
-
-
-
-//        $em = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository('AppBundle:Task');
-
-        //saves tasks in the db
-//        $em->persist($task);
-//        $em->flush();
 
         //gets all tasks from the db
         $tasks = $repository->findAll();
