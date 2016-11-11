@@ -51,6 +51,24 @@ class ToDoController extends Controller
      *
      * @Route("/delete/{id}", name="delete", requirements={"id": "\d+"})
      */
+    public function deleteAction($id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Task');
+
+        $task = $repository->find($id);
+
+        if (!$task) {
+            throw $this->createNotFoundException(
+                'No task found for id '.$id
+            );
+        }
+
+        $em->remove($task);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
 
 
 }
