@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class ToDoController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -45,4 +45,12 @@ class DefaultController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    /**
+     * Matches /delete/*
+     *
+     * @Route("/delete/{id}", name="delete", requirements={"id": "\d+"})
+     */
+
+
 }

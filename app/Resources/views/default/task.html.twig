@@ -4,7 +4,7 @@
     {{ form_widget(form) }}
     {{ form_end(form) }}
     {% for task in tasks %}
-        <li><a href="">{{ task.item }}</a></li>
+        <li>id: {{ task.id }} item: {{ task.item }}</li>
     {% endfor %}
 {% endblock %}
 {% block stylesheets %}
