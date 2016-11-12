@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <h1>WMAS ToDo List</h1>
+    <h2>Built using a Symfony3 API and a jQuery front-end</h2>
+    <input type="text" id="new-task" placeholder="Enter new task"/>
+    <button id="create-1" type="button">create</button>
     {% for task in tasks %}
-        <li>id: {{ task.id }} item: {{ task.item }}</li>
+        <li id="{{ task.id }}">{{ task.item }}</li><button id="edit-{{ task.id }}" type="button">edit</button><button id="delete-{{ task.id }}" type="button">delete</button>
     {% endfor %}
 {% endblock %}
 {% block stylesheets %}
