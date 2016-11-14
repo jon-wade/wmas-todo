@@ -59,6 +59,25 @@ class ToDoController extends Controller
     }
 
     /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/delete-all", name="delete-all")
+     */
+
+    public function deleteAllAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Task');
+        $tasks = $repository->findAll();
+        foreach ($tasks as $task) {
+            $em->remove($task);
+        }
+        $em->flush();
+        return $this->redirectToRoute('homepage');
+
+    }
+
+
+    /**
      * Matches /update/*
      * @param $id
      * @param $value

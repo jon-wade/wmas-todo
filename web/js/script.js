@@ -3,8 +3,11 @@ $(document).ready(function() {
         var id = $(this).prop('id');
         var action = id.split('-')[0];
         var taskId = id.split('-')[1];
-        if(action === 'delete') {
+        if(action === 'delete' && taskId !== 'all') {
             $.get('/delete/' + taskId).done(location.reload());
+        }
+        if(action === 'delete' && taskId === 'all') {
+            $.get('/delete-all').done(location.reload());
         }
         else if(action === 'edit') {
             $(this).replaceWith('<button id="save-' + taskId + '" class="btn btn-success">save</button>');
