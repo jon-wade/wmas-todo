@@ -7,13 +7,13 @@ $(document).ready(function() {
             $.get('/delete/' + taskId).done(location.reload());
         }
         else if(action === 'edit') {
-            $(this).replaceWith('<button id="save-' + taskId + '">save</button>');
+            $(this).replaceWith('<button id="save-' + taskId + '" class="btn btn-success">save</button>');
             var selector =  $('li#' + taskId);
             var editData = selector.text();
-            selector.replaceWith('<li id="' + taskId + '"><input type="text" id="input-' + taskId + '" value="' + editData + '"/></li>');
+            selector.replaceWith('<li id="' + taskId + '"><input type="text" id="input-' + taskId + '" value="' + editData + '" class="form-control"/></li>');
         }
         else if(action === 'save') {
-            $(this).replaceWith('<button id="edit-' + taskId + '">edit</button>');
+            $(this).replaceWith('<button id="edit-' + taskId + '" class="btn btn-secondary">edit</button>');
             var newData = $('input#input-' + taskId).val();
             $.get('/update/' + taskId + '/' + newData).done(location.reload());
         }

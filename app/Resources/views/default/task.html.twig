@@ -1,14 +1,50 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
-    <h1>WMAS ToDo List</h1>
-    <h2>Built using a Symfony3 API and a jQuery front-end</h2>
-    <input type="text" id="new-task" placeholder="Enter new task"/>
-    <button id="create-1" type="button">create</button>
-    {% for task in tasks %}
-        <li id="{{ task.id }}">{{ task.item }}</li><button id="edit-{{ task.id }}" type="button">edit</button><button id="delete-{{ task.id }}" type="button">delete</button>
-    {% endfor %}
+<div id="main" class="container-fluid">
+    <div class="row flex-items-xs-middle">
+        <div class="col-xs"></div>
+        <div class="col-xs-8">
+            <div class="row flex-items-xs-middle header">
+                <div class="col-xs flex-xs-middle">
+                    <img src="./wmas-logo.svg" class="logo">
+                </div>
+            </div>
+            <div class="row flex-items-xs-middle form-group">
+                <div class="col-xs">
+                    <div class="row flex-items-xs-middle">
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" id="new-task" placeholder="Enter new task"/>
+                        </div>
+                        <div class="col-xs">
+                            <button id="create-1" type="button" class="btn btn-secondary">create</button><button id="delete-all" type="button" class="btn btn-danger">delete all</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row flex-items-xs-middle">
+                <div class="col-xs">
+                    <ul>
+                        {% for task in tasks %}
+                            <div class="row flex-items-xs-middle task-item">
+                                <div class="col-xs-8">
+                                    <li id="{{ task.id }}" class="task-copy">{{ task.item }}</li>
+                                </div>
+                                <div class="col-xs">
+                                    <button id="edit-{{ task.id }}" type="button" class="btn btn-secondary">edit</button><button id="delete-{{ task.id }}" type="button" class="btn btn-danger">delete</button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs"></div>
+    </div>
+</div>
 {% endblock %}
 {% block stylesheets %}
 <style>
 </style>
 {% endblock %}
+

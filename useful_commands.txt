@@ -6,3 +6,6 @@ php bin/console doctrine:generate:entities AppBundle/Entity/Task
 
 # update the db schema
 php bin/console doctrine:schema:update --force
+
+#starting server
+php bin/console server:run
