@@ -5,6 +5,13 @@ function create() {
 
 $(document).ready(function() {
     var editing = false;
+    $(document).on('click', 'li', function() {
+        console.log('li clicked');
+        $(this).append('<p>something here</p>')
+
+    });
+
+
     $(document).on('click', 'button', function() {
         var id = $(this).prop('id');
         var action = id.split('-')[0];

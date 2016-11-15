@@ -2,36 +2,42 @@
 
 {% block body %}
 <div id="main" class="container-fluid">
-    <div class="row flex-items-xs-middle">
-        <div class="col-xs"></div>
-        <div class="col-xs-8">
-            <div class="row flex-items-xs-middle header">
-                <div class="col-xs flex-xs-middle">
+    <div class="row flex-items-sm-middle">
+        <div class="col-sm"></div>
+        <div class="col-sm-8">
+            <div class="row flex-items-sm-middle header">
+                <div class="col-sm flex-sm-middle">
                     <img src="./wmas-logo.svg" class="logo">
                 </div>
             </div>
-            <div class="row flex-items-xs-middle form-group">
-                <div class="col-xs">
-                    <div class="row flex-items-xs-middle">
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" id="new-task" placeholder="Enter new task" autofocus="autofocus"/>
-                        </div>
-                        <div class="col-xs">
-                            <button id="create-1" type="button" class="btn btn-secondary">create</button><button id="delete-all" type="button" class="btn btn-danger">delete all</button>
-                        </div>
-                    </div>
+            <div class="row flex-items-sm-middle form-group">
+                <div class="col-sm">
+                    <input type="text" class="form-control" id="new-task" placeholder="Enter new task" autofocus="autofocus"/>
                 </div>
             </div>
-            <div class="row flex-items-xs-middle">
-                <div class="col-xs">
+            <div class="row flex-items-sm-middle form-group">
+                <div class="col-sm">
+                    <button id="create-1" type="button" class="btn btn-secondary left">create</button>
+                </div>
+                <div class="col-sm">
+                    <button id="delete-all right" type="button" class="btn btn-danger right">delete all</button>
+                </div>
+            </div>
+            <div class="row flex-items-sm-middle">
+                <div class="col-sm">
                     <ul>
                         {% for task in tasks %}
-                            <div class="row flex-items-xs-middle task-item">
-                                <div class="col-xs-8">
+                            <div class="row flex-items-sm-middle form-group task-item">
+                                <div class="col-sm">
                                     <li id="{{ task.id }}" class="task-copy">{{ task.item }}</li>
                                 </div>
-                                <div class="col-xs">
-                                    <button id="edit-{{ task.id }}" type="button" class="btn btn-secondary">edit</button><button id="delete-{{ task.id }}" type="button" class="btn btn-danger">delete</button>
+                            </div>
+                            <div class="row flex-items-sm-middle form-group">
+                                <div class="col-sm button-group">
+                                    <button id="edit-{{ task.id }}" type="button" class="btn btn-secondary left">edit</button>
+                                </div>
+                                <div class="col-sm button-group">
+                                    <button id="delete-{{ task.id }}" type="button" class="btn btn-danger right">delete</button>
                                 </div>
                             </div>
                         {% endfor %}
@@ -39,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs"></div>
+        <div class="col-sm"></div>
     </div>
 </div>
 {% endblock %}
