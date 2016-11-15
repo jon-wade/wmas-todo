@@ -4,14 +4,21 @@ function create() {
 }
 
 $(document).ready(function() {
-    var editing = false;
-    $(document).on('click', 'li', function() {
-        console.log('li clicked');
-        $(this).append('<p>something here</p>')
-
+    var editingArr = [];
+    $(document).on('click', 'li', function(e) {
+        console.log(this);
+        var id = $(this).prop('id');
+        console.log(editingArr[id]);
+        if(editingArr[id] === undefined || editingArr[id] === false) {
+            editingArr[id] = true;
+            $('.button-group-' + id).css('display', 'block');
+        }
+        else if (editingArr[id] && !$(this).children().is('input')) {
+            // console.log('is the child element an input field?', $(this).children().is('input'));
+            editingArr[id] = false;
+            $('.button-group-' + id).css('display', 'none');
+        }
     });
-
-
     $(document).on('click', 'button', function() {
         var id = $(this).prop('id');
         var action = id.split('-')[0];
@@ -22,16 +29,14 @@ $(document).ready(function() {
         if(action === 'delete' && taskId === 'all') {
             $.get('/delete-all').done(location.reload());
         }
-        else if(action === 'edit' && editing === false) {
-            editing = true;
-            $(this).replaceWith('<button id="save-' + taskId + '" class="btn btn-success">save</button>');
+        else if(action === 'edit') {
+            $(this).replaceWith('<button id="save-' + taskId + '" class="btn btn-success left">save</button>');
             var selector =  $('li#' + taskId);
             var editData = selector.text();
             selector.replaceWith('<li id="' + taskId + '"><input type="text" id="input-' + taskId + '" value="' + editData + '" class="form-control edit-copy"/></li>');
         }
         else if(action === 'save') {
-            editing = false;
-            $(this).replaceWith('<button id="edit-' + taskId + '" class="btn btn-secondary">edit</button>');
+            $(this).replaceWith('<button id="edit-' + taskId + '" class="btn btn-secondary left">edit</button>');
             var newData = $('input#input-' + taskId).val();
             $.get('/update/' + taskId + '/' + newData).done(location.reload());
         }

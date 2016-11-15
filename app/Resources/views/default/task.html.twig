@@ -20,7 +20,7 @@
                     <button id="create-1" type="button" class="btn btn-secondary left">create</button>
                 </div>
                 <div class="col-sm">
-                    <button id="delete-all right" type="button" class="btn btn-danger right">delete all</button>
+                    <button id="delete-all" type="button" class="btn btn-danger right">delete all</button>
                 </div>
             </div>
             <div class="row flex-items-sm-middle">
@@ -33,10 +33,10 @@
                                 </div>
                             </div>
                             <div class="row flex-items-sm-middle form-group">
-                                <div class="col-sm button-group">
+                                <div class="col-sm button-group button-group-{{ task.id }}">
                                     <button id="edit-{{ task.id }}" type="button" class="btn btn-secondary left">edit</button>
                                 </div>
-                                <div class="col-sm button-group">
+                                <div class="col-sm button-group button-group-{{ task.id }}">
                                     <button id="delete-{{ task.id }}" type="button" class="btn btn-danger right">delete</button>
                                 </div>
                             </div>
