@@ -1,5 +1,8 @@
 Overview
 =========
+
+You can see the application live at http://jonwade.digital (http://64.111.99.99 in case there are any DNS issues)
+
 I put this application together to demonstrate getting up to speed with the Symfony3 php framework. I tacked this in the following way:
 
 * Started off getting to grips with the overall framework, by running through the tutorial available at http://symfony.com/doc/current/index.html. This involved quite a lot of setup and installation of the required software packages.
@@ -10,7 +13,7 @@ I put this application together to demonstrate getting up to speed with the Symf
 * Setting about building the interface, I plumped for jQuery for its simplicity and my familiarity with it. I hit the API endpoints from the interface using `$.ajax()` GET requests for ease of implementation.
 * Having got the JS functionality working, I then built the layout using Bootstrap4's flex-grid system to provide an easy to use responsive UI grid system and populated it with Bootstrap components.
 * Having a little more time than I thought, I went to http://wemakeawesomesh.it/ to get an idea of their branding, and decided to use a cinemagraph background for my app along with a similar colour palette. I'm not a designer btw!!
-* Finally I deployed to a staging server I have running on Ubuntu14.04 behind an Nginx web server to make the app available online.
+* Finally I deployed to a staging server I have running on Ubuntu14.04 behind an Nginx web server to make the app available online, kept running using `screen`.
 
 The above took me around 20 hours over the course of 8 days.
 
@@ -19,6 +22,8 @@ Installation
 To install this app from github, you need php5.6 and Symfony installed on your machine, instructions here: http://symfony.com/doc/current/setup.html. There are a couple of additional elements that need to be added in.
 
 * Once cloned, `cd` into your project directory and issue the following at the command line `mkdir app/data`. This is where the database will be created.
+
+* Next, install module dependencies with `composer install`.
 
 * Then `php bin/console doctrine:database:create` to create the db.
 

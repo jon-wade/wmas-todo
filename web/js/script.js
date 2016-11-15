@@ -5,16 +5,13 @@ function create() {
 
 $(document).ready(function() {
     var editingArr = [];
-    $(document).on('click', 'li', function(e) {
-        console.log(this);
+    $(document).on('click touchstart', 'li', function() {
         var id = $(this).prop('id');
-        console.log(editingArr[id]);
         if(editingArr[id] === undefined || editingArr[id] === false) {
             editingArr[id] = true;
             $('.button-group-' + id).css('display', 'block');
         }
         else if (editingArr[id] && !$(this).children().is('input')) {
-            // console.log('is the child element an input field?', $(this).children().is('input'));
             editingArr[id] = false;
             $('.button-group-' + id).css('display', 'none');
         }
