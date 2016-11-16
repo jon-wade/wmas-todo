@@ -1,6 +1,6 @@
 function create() {
     var newTask = $('#new-task').val();
-    $.get('/create/' + newTask).done(location.reload());
+    $.get('/create/' + newTask).done(window.location.reload(true));
 }
 
 $(document).ready(function() {
@@ -16,15 +16,15 @@ $(document).ready(function() {
             $('.button-group-' + id).css('display', 'none');
         }
     });
-    $(document).on('click', 'button', function() {
+    $(document).on('click touch', 'button', function() {
         var id = $(this).prop('id');
         var action = id.split('-')[0];
         var taskId = id.split('-')[1];
         if(action === 'delete' && taskId !== 'all') {
-            $.get('/delete/' + taskId).done(location.reload());
+            $.get('/delete/' + taskId).done(window.location.reload(true));
         }
         if(action === 'delete' && taskId === 'all') {
-            $.get('/delete-all').done(location.reload());
+            $.get('/delete-all').done(window.location.reload(true));
         }
         else if(action === 'edit') {
             $(this).replaceWith('<button id="save-' + taskId + '" class="btn btn-success left">save</button>');
@@ -34,8 +34,8 @@ $(document).ready(function() {
         }
         else if(action === 'save') {
             $(this).replaceWith('<button id="edit-' + taskId + '" class="btn btn-secondary left">edit</button>');
-            var newData = $('input#input-' + taskId).val();
-            $.get('/update/' + taskId + '/' + newData).done(location.reload());
+            var newData = $('input#input-' + taskId).val();ß
+            $.get('/update/' + taskId + '/' + newData).done(window.location.reload(true));
         }
         else if(action === 'create' && $('#new-task').val() !== '') {
             create();
